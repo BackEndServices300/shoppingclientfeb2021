@@ -1,0 +1,26 @@
+<div class="alert alert-success"
+     *ngIf="order">
+  <h5>Order Placed.</h5>
+  <p>Order Id: {{ order.id}} can be picked up at {{ order.pickupTimeAssigned }} </p>
+</div>
+<form (ngSubmit)="submit()"
+      *ngIf="!waiting"
+      [formGroup]="form">
+  <div class="form-group">
+    <label for="pickupPerson">Who will pick it up</label>
+    <input class="form-control"
+           formControlName="pickupPerson">
+  </div>
+  <div class="form-group">
+    <label for="items">Comma Separated List of Items</label>
+    <input class="form-control"
+           formControlName="items">
+  </div>
+  <button type="submit"
+          [disabled]="form.invalid"
+          class="btn btn-primary">Place Order</button>
+</form>
+<div class="alert alert-info"
+     *ngIf="waiting">
+  <h4>Please Wait While We Place Your Order</h4>
+</div>
