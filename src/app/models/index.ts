@@ -9,3 +9,7 @@ export interface Order {
   items: string;
   pickupTimeAssigned?: string;
 }
+
+export interface OrderWs extends Order {
+  message: string;
+}

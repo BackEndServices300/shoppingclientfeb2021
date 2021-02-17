@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms'
 import { AsyncStore } from './components/async/asyncstore';
+import { WsStore } from './components/ws/wsstore';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { AsyncStore } from './components/async/asyncstore';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AsyncStore],
+  providers: [AsyncStore, WsStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

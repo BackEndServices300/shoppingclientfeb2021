@@ -1,1 +1,23 @@
-<p>ws works!</p>
+<form (ngSubmit)="submit()"
+      [formGroup]="form">
+  <div class="form-group">
+    <label for="pickupPerson">Who will pick it up</label>
+    <input class="form-control"
+           formControlName="pickupPerson">
+  </div>
+  <div class="form-group">
+    <label for="items">Comma Separated List of Items</label>
+    <input class="form-control"
+           formControlName="items">
+  </div>
+  <button type="submit"
+          [disabled]="form.invalid"
+          class="btn btn-primary">Place Order</button>
+</form>
+
+<div class="alert alert-info"
+     *ngFor="let order of orders$ | async">
+  <h5>Order {{ order.id}} picked up by {{order.pickupPerson}}</h5>
+
+  <p *ngIf="order.pickupTimeAssigned">You can pick it up at {{ order.pickupTimeAssigned }}</p>
+</div>
