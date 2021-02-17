@@ -18,6 +18,6 @@
 <div class="alert alert-info"
      *ngFor="let order of orders$ | async">
   <h5>Order {{ order.id}} picked up by {{order.pickupPerson}}</h5>
-
+  <p>Message {{ order.message }}</p>
   <p *ngIf="order.pickupTimeAssigned">You can pick it up at {{ order.pickupTimeAssigned }}</p>
 </div>

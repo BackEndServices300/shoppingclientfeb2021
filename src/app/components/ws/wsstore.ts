@@ -12,6 +12,7 @@ export class WsStore extends ComponentStore<{ orders: OrderWs[] }> {
 
   constructor() {
     super({ orders: [] });
+
     this.hubConnection = new signalR.HubConnectionBuilder()
       .withUrl('http://localhost:1337/shoppinghub')
       .build();
@@ -56,7 +57,7 @@ export class WsStore extends ComponentStore<{ orders: OrderWs[] }> {
 
   readonly createOrder = this.effect((order$: Observable<CreateOrder>) => {
     return order$.pipe(
-      tap(order => this.hubConnection.send('placeOrder', order)),
+      tap(order => this.hubConnection.send('PlaceOrder', order)),
       tap(order => console.log('Got an order', order))
     )
   });
